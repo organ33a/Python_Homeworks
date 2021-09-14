@@ -33,6 +33,7 @@ print(x, type(x))
 
 x = 5
 # ... ----- x изначально int, ничего не требуется
+# x = int(x)
 print(x, type(x))
 # 5 <class 'int'>
 
@@ -60,11 +61,22 @@ print("Symbols from second to fifth are - ", txt[1:5])
 txt1 = "Hello World"
 txt2 = " Hello World "
 
-# if txt1 == txt2:
-#     print("The strings are equal")
-# else:
-#     txt2 = txt2.strip()
+if txt1 == txt2:
+    print("The strings are equal")
+else:
+    print("The strings are not equal")
 
+txt1 = txt1.strip()
+txt2 = txt2.strip()
+# txt2 = txt2.lstrip() удаляет пробел слева
+# txt2 = txt2.rstrip() удаляет пробел справа
+
+print("spaces from the left and right are removed")
+
+if txt1 == txt2:
+    print("The strings are equal")
+else:
+    print("The strings are not equal")
 
 
 # Преобразуйте строку  "Hello World" так, чтобы она выводилась на консоль заглавными буквами
@@ -84,9 +96,19 @@ print("Замена произведена и вот результат - " + my
 
 
 # Напишите программу, которая преобразует строку "Hello World" в строку "Hello Word"
-#
+# string[start:end:step]
+# string[start:end]
+# string[:end]
+# string[start:]
+txt3 = txt1[:-2] + txt1[-1:]
+print("txt1[-1:] = ", txt1[-1:])
+print("txt1[:-2] = ", txt1[:-2])
+print(txt3)
 
-
+print(txt1.replace("Hello World", "Hello Word "))
+print(txt1.replace("World", "Word"))
+print(txt1.replace("l", ""))
+print(txt1.replace("rld", "rd"))
 
 
 # У вас есть переменная my_age. Присвойте ей значение и напишите программу, которая выведет на консоль сообщение,
@@ -94,7 +116,8 @@ print("Замена произведена и вот результат - " + my
 # I am … years old.
 
 my_age = 20
-print("I am" + " " + str(my_age) + " " + "years old.")
+print("I am" + " " + str(my_age) + " " + "years old.") # 1 способ
+print(f"I am {my_age} years old") # 2 способ
 
 
 
@@ -103,4 +126,15 @@ print("I am" + " " + str(my_age) + " " + "years old.")
 # I made this mistake … times.
 
 import random
+
 print("I made this mistake " + str(random.randrange(1, 10)) + " times")
+print(f"I made this mistake {random.randrange(1, 10)} times")
+
+
+# выводит рандомную строку на заданное кол-во символов - 25 символов
+#
+import string
+
+length = 15
+print("random user name with letters: ")
+print("".join(random.choices(string.ascii_letters, k=length)))
